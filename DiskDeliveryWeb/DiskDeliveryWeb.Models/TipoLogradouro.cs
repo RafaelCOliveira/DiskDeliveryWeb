@@ -1,12 +1,17 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace DiskDeliveryWeb.Models
 {
+    [Table("TipoLogradouro")]
     public class TipoLogradouro
     {
-        /* 
-        CREATE TABLE TIPO_LOGRADOURO (
-        ID_LOGRADOURO    INTEGER NOT NULL,
-        DESC_LOGRADOURO  VARCHAR(30) NOT NULL
-        ) ;
-        */
+        [Key]
+        public int Id_Logradouro { get; set; }
+
+        [Required]
+        [MaxLength(30),MinLength(5)]
+        [Display(Name = "Tipo Logradouro")]
+        public string Descricao { get; set; }
     }
 }

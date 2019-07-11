@@ -1,12 +1,19 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace DiskDeliveryWeb.Models
 {
+    [Table("UF")]
     public class UF
     {
-        /*
-        CREATE TABLE UF (
-        COD_UF   CHAR(2) NOT NULL,
-        DESC_UF  VARCHAR(30) NOT NULL
-        ) ;
-        */
+        [Key]
+        [Display(Name = "UF")]
+        [MaxLength(2),MinLength(2)]
+        public string Cod_UF { get; set; }
+
+        [Required]
+        [MaxLength(30),MinLength(2)]
+        [Display(Name = "Descrição")]
+        public string Descricao { get; set; }
     }
 }
