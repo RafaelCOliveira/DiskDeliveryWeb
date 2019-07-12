@@ -1,0 +1,27 @@
+@{
+    ViewData["Title"] = "Forma de Pagamento";
+}
+
+@model DiskDeliveryWeb.Models.Categoria
+
+<form asp-controller="Categoria" asp-action="Create" method="Post">
+    <div class="row">
+        <div class="col-lg-4">	
+            <div class="form-group">
+                <label asp-for="Id_Categoria"></label>
+                <input class="form-control" asp-for="Id_Categoria" readonly >
+            </div>
+        </div>
+    </div>  
+    <div class="row">
+        <div class="col-lg-4">	
+            <div class="form-group">
+                <label asp-for="Descricao"></label>
+                <input class="form-control" asp-for="Descricao">
+            </div>
+        </div>
+    </div>  
+    </div>  
+    <a class="btn btn-primary" asp-controller="Categoria" asp-action="Index">Voltar</a>
+    <button type="submit" class="btn btn-primary">Salvar</button>    
+</form> 

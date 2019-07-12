@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Categoria";
+}
+@using System
+@model IEnumerable<DiskDeliveryWeb.Models.Categoria>
+
+
+<div class="row">
+    <div class="col-lg-6">	
+        <form >
+            <table class="table table-striped table-hover table-sm table-responsive">
+            <thead>
+                <tr>
+                    <th scope="col">Código</th>
+                    <th scope="col">Descrição</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @item.Id_Categoria 
+                            </td>
+                            <td>
+                                @item.Descricao
+                            </td>
+                            <td>
+                                <button type="submit" class="btn btn-warning" asp-controller="Categoria" asp-action="Edit" asp-route-id=@item.Id_Categoria>Editar</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <button type="submit" class="btn btn-primary" asp-controller="Categoria" asp-action="Create">Novo</button>
+        </form>
+
+    </div>
+</div> 

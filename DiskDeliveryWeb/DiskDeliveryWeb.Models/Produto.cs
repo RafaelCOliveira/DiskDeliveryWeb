@@ -1,9 +1,13 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DiskDeliveryWeb.Models
 {
+    [Table("Produtos")]
     public class Produto
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Display(Name = "Código")]
         public int Id_Produto { get; set; }
 
@@ -19,12 +23,12 @@ namespace DiskDeliveryWeb.Models
         [Display(Name = "Preço")]
         public decimal Preco { get; set; }
 
-        [Required]
-        [Display(Name = "Descrição")]
-        public bool Ativo { get; set; } 
-
         [Required(ErrorMessage = "A categoria do produto é obrigatória.")]
         [Display(Name = "Categoria")]
         public Categoria Categoria { get; set; } 
+
+        [Required]
+        [Display(Name = "Ativo")]
+        public bool Ativo { get; set; } 
     }
 }

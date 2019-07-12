@@ -3,10 +3,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DiskDeliveryWeb.Models
 {
-    [Table("Categoria")]
+    [Table("Categorias")]
     public class Categoria
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Display(Name = "Código")]
         public int Id_Categoria { get; set; }
 
