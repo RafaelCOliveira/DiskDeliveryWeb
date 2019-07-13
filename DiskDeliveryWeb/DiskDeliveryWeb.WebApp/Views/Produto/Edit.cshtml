@@ -1,0 +1,58 @@
+@{
+    ViewData["Title"] = "Produto";
+}
+
+@model DiskDeliveryWeb.Models.Produto
+
+<form asp-controller="Produto" asp-action="Edit" method="Put">
+    <div class="row">
+        <div class="col-lg-4">	
+            <div class="form-group">
+                <label asp-for="Id_Produto"></label>
+                <input class="form-control" asp-for="Id_Produto" readonly >
+            </div>
+        </div>
+    </div>  
+    <div class="row">
+        <div class="col-lg-4">	
+            <div class="form-group">
+                <label asp-for="Nome"></label>
+                <input class="form-control" asp-for="Nome" >
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">	
+            <div class="form-group">
+                <label asp-for="Descricao"></label>
+                <input class="form-control" asp-for="Descricao" >
+            </div>
+        </div>
+    </div>  
+    <div class="row">
+        <div class="col-lg-4">	
+            <div class="form-group">
+                <label asp-for="Preco"></label>
+                <input class="form-control" asp-for="Preco" >
+            </div>
+        </div>
+    </div>  
+    <div class="row">
+        <div class="col-lg-4">	
+            <div class="form-group">
+                <label asp-for="Categoria"></label>
+                <input class="form-control" asp-for="Categoria" >
+            </div>
+        </div>
+    </div> 
+    <div class="row">
+        <div class="col-lg-1">	
+            <div class="form-group form-check">
+                <input class="form-check-input" asp-for="Ativo">
+                <label class="form-check-label" asp-for="Ativo"></label>
+            </div>
+        </div>
+    </div>  
+    <a class="btn btn-primary" asp-controller="Produto" asp-action="Index">Voltar</a>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+</form> 

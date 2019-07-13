@@ -1,4 +1,7 @@
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using DiskDeliveryWeb.Data;
 using DiskDeliveryWeb.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,17 +9,16 @@ namespace DiskDeliveryWeb.WebApp.Controllers
 {
     public class CategoriaController : Controller
     {
+        private readonly ApplicationDbContext _contexto;
+        public CategoriaController(ApplicationDbContext contexto)
+        {
+            _contexto = contexto;
+        }
+
         [HttpGet]
         public IActionResult Index()
         {
-            List<Categoria> ListCategoria = new List<Categoria>();
-
-            /* Categoria s1 = new Categoria() { Id_Categoria = 1, Descricao = "Comida" };
-            ListCategoria.Add(s1);
-            Categoria s2 = new Categoria() { Id_Categoria = 2, Descricao = "Bebida" };
-            ListCategoria.Add(s2);
-            Categoria s3 = new Categoria() { Id_Categoria = 3, Descricao = "Outros" };
-            ListCategoria.Add(s3);*/
+            List<Categoria> ListCategoria = _contexto.Categorias.ToList();
             return View(ListCategoria);
         }
 
@@ -27,22 +29,31 @@ namespace DiskDeliveryWeb.WebApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Categoria categoria)
+        public async Task<IActionResult> Create(Categoria categoria)
         {
-            return View();
+
+            
+            _contexto.Categorias.Add(categoria);
+            await _contexto.SaveChangesAsync();
+         
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
-        public IActionResult Edit(int Id_Categoria)
+        public IActionResult Edit(int id)
         {
-            Categoria s1 = new Categoria() { Id_Categoria = 1, Descricao = "Comida" };
-            return View(s1);
+            Categoria categoria = _contexto.Categorias.Find(id);
+            return View(categoria);
         }
 
-        [HttpPut]
-        public IActionResult Edit(Categoria categoria)
+        [HttpPost]
+        public async Task<IActionResult> Edit(Categoria categoria)
         {
-            return View();
+           
+            _contexto.Categorias.Update(categoria);
+            await _contexto.SaveChangesAsync();
+
+            return RedirectToAction("Index");
         }
     }
 }

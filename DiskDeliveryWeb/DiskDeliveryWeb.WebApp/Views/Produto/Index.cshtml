@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Produto";
+}
+@using System
+@model IEnumerable<DiskDeliveryWeb.Models.Produto>
+
+
+<div class="row">
+    <div class="col-lg-6">	
+        <form >
+            <table class="table table-striped table-hover table-sm table-responsive">
+            <thead>
+                <tr>
+                    <th scope="col">Código</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Ativo</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @item.Id_Produto 
+                            </td>
+                            <td>
+                                @item.Nome
+                            </td>
+                            <td>
+                                @item.Preco
+                            </td>
+                            <td>
+                                @item.Categoria.Descricao
+                            </td>
+                            <td>
+                                <input type="checkbox" class="form-check-input" @( item.Ativo ? "checked" : "" ) disabled>   
+                            </td>
+                            <td>
+                                <button type="submit" class="btn btn-warning" asp-controller="Produto" asp-action="Edit" asp-route-id=@item.Id_Produto>Editar</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <button type="submit" class="btn btn-primary" asp-controller="Produto" asp-action="Create">Novo</button>
+        </form>
+
+    </div>
+</div> 

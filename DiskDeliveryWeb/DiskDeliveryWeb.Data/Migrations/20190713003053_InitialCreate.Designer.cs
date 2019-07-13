@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DiskDeliveryWeb.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190712205804_InitialCreate")]
+    [Migration("20190713003053_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,10 +43,10 @@ namespace DiskDeliveryWeb.Data.Migrations
 
                     b.Property<bool>("Ativo");
 
-                    b.Property<int>("CategoriaId_Categoria");
-
                     b.Property<string>("Descricao")
                         .IsRequired();
+
+                    b.Property<int>("Id_Categoria");
 
                     b.Property<string>("Nome")
                         .IsRequired();
@@ -55,7 +55,7 @@ namespace DiskDeliveryWeb.Data.Migrations
 
                     b.HasKey("Id_Produto");
 
-                    b.HasIndex("CategoriaId_Categoria");
+                    b.HasIndex("Id_Categoria");
 
                     b.ToTable("Produtos");
                 });
@@ -64,7 +64,7 @@ namespace DiskDeliveryWeb.Data.Migrations
                 {
                     b.HasOne("DiskDeliveryWeb.Models.Categoria", "Categoria")
                         .WithMany()
-                        .HasForeignKey("CategoriaId_Categoria")
+                        .HasForeignKey("Id_Categoria")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

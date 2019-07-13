@@ -4,12 +4,12 @@
 
 @model DiskDeliveryWeb.Models.Categoria
 
-<form asp-controller="Categoria" asp-action="Edit" method="Put">
+<form asp-controller="Categoria" asp-action="Edit" method="Post">
     <div class="row">
         <div class="col-lg-4">	
             <div class="form-group">
                 <label asp-for="Id_Categoria"></label>
-                <input class="form-control" asp-for="Id_Categoria" readonly >
+                <input class="form-control" asp-for="Id_Categoria" >
             </div>
         </div>
     </div>  

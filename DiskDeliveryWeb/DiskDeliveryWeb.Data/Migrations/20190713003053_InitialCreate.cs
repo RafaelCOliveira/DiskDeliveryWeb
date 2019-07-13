@@ -29,24 +29,24 @@ namespace DiskDeliveryWeb.Data.Migrations
                     Nome = table.Column<string>(nullable: false),
                     Descricao = table.Column<string>(nullable: false),
                     Preco = table.Column<decimal>(nullable: false),
-                    CategoriaId_Categoria = table.Column<int>(nullable: false),
+                    Id_Categoria = table.Column<int>(nullable: false),
                     Ativo = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Produtos", x => x.Id_Produto);
                     table.ForeignKey(
-                        name: "FK_Produtos_Categorias_CategoriaId_Categoria",
-                        column: x => x.CategoriaId_Categoria,
+                        name: "FK_Produtos_Categorias_Id_Categoria",
+                        column: x => x.Id_Categoria,
                         principalTable: "Categorias",
                         principalColumn: "Id_Categoria",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Produtos_CategoriaId_Categoria",
+                name: "IX_Produtos_Id_Categoria",
                 table: "Produtos",
-                column: "CategoriaId_Categoria");
+                column: "Id_Categoria");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

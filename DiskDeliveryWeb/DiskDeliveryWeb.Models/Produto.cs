@@ -23,6 +23,9 @@ namespace DiskDeliveryWeb.Models
         [Display(Name = "Preço")]
         public decimal Preco { get; set; }
 
+        public int Id_Categoria { get; set; }
+
+        [ForeignKey("Id_Categoria")]
         [Required(ErrorMessage = "A categoria do produto é obrigatória.")]
         [Display(Name = "Categoria")]
         public Categoria Categoria { get; set; } 
