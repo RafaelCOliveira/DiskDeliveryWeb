@@ -9,7 +9,7 @@ namespace DiskDeliveryWeb.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Display(Name = "Código")]
-        public int Id_Produto { get; set; }
+        public int? Id_Produto { get; set; }
 
         [Required(ErrorMessage = "O Nome do Produto é obrigatório.")]
         [Display(Name = "Produto")]
@@ -28,7 +28,7 @@ namespace DiskDeliveryWeb.Models
         [ForeignKey("Id_Categoria")]
         [Required(ErrorMessage = "A categoria do produto é obrigatória.")]
         [Display(Name = "Categoria")]
-        public Categoria Categoria { get; set; } 
+        public virtual Categoria Categoria { get; set; } 
 
         [Required]
         [Display(Name = "Ativo")]

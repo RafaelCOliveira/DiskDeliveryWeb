@@ -29,14 +29,16 @@ namespace DiskDeliveryWeb.WebApp.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Categoria categoria)
         {
-
-            
-            _contexto.Categorias.Add(categoria);
-            await _contexto.SaveChangesAsync();
-         
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                _contexto.Categorias.Add(categoria);
+                await _contexto.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            return View(categoria);
         }
 
         [HttpGet]
@@ -47,13 +49,17 @@ namespace DiskDeliveryWeb.WebApp.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Categoria categoria)
         {
-           
-            _contexto.Categorias.Update(categoria);
-            await _contexto.SaveChangesAsync();
-
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                _contexto.Categorias.Update(categoria);
+                await _contexto.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            return View(categoria);
         }
+        
     }
 }

@@ -12,5 +12,10 @@ namespace DiskDeliveryWeb.Data
 
         public DbSet<Produto> Produtos { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {           
+         
+        }
+
     }
 }

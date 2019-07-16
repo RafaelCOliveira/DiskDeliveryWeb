@@ -1,52 +1,69 @@
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using DiskDeliveryWeb.Data;
 using DiskDeliveryWeb.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace DiskDeliveryWeb.Controllers
 {
     public class ProdutoController : Controller
     {
-        public ProdutoController()
+        private readonly ApplicationDbContext _contexto;
+        public ProdutoController(ApplicationDbContext contexto)
         {
-
+            _contexto = contexto;
         }
         
         [HttpGet]
         public IActionResult Index()
         {
-            List<Produto> ListFormaPagamento = new List<Produto>();
-            Produto s1 = new Produto() { Id_Produto = 1, Descricao = "Teste", Nome = "Teste", Preco = 10, Ativo = true, Categoria = new Categoria(){Id_Categoria =1, Descricao = "Comida"} };
-            ListFormaPagamento.Add(s1);
-            Produto s2 = new Produto() { Id_Produto = 2, Descricao = "Teste1", Nome = "Teste1", Preco = 15, Ativo = true, Categoria = new Categoria(){Id_Categoria =2, Descricao = "Bebida"} };
-            ListFormaPagamento.Add(s2);
-            Produto s3 = new Produto() { Id_Produto = 3, Descricao = "Teste2", Nome = "Teste2", Preco = 15, Ativo = false, Categoria = new Categoria(){Id_Categoria =3, Descricao = "Bebida"} };
-            ListFormaPagamento.Add(s3);
-            return View(ListFormaPagamento);
+            List<Produto> ListProdutos = _contexto.Produtos.Include(p => p.Categoria).ToList();
+            return View(ListProdutos);
         }
 
         [HttpGet]
         public IActionResult Create()
         {
+            ViewBag.Categorias = _contexto.Categorias.ToList();
             return View();
         }
 
         [HttpPost]
-        public IActionResult Create(Produto produto)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Produto produto)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                _contexto.Produtos.Add(produto);
+                await _contexto.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            ViewBag.Categorias = _contexto.Categorias.ToList();
+            return View(produto);
         }
 
         [HttpGet]
-        public IActionResult Edit(int Id_Produto)
+        public IActionResult Edit(int id)
         {
-            Produto s1 = new Produto() { Id_Produto = 1, Descricao = "Dinheiro", Ativo = true };
-            return View(s1);
+            Produto produto = _contexto.Produtos.Find(id);
+            return View(produto);
         }
 
-        [HttpPut]
-        public IActionResult Edit(Produto produto)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(Produto produto)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                _contexto.Produtos.Update(produto);
+                await _contexto.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            ViewBag.Categorias = _contexto.Categorias.ToList();
+            return View(produto);
         }
+
     }
 }

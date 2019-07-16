@@ -11,9 +11,11 @@
             <table class="table table-striped table-hover table-sm table-responsive">
             <thead>
                 <tr>
-                    <th scope="col">Código</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Ativo</th>
+                    <th scope="col"><label asp-for="@Model.First().Id_Produto"></label></th>
+                    <th scope="col"><label asp-for="@Model.First().Nome"></label></th>
+                    <th scope="col"><label asp-for="@Model.First().Preco"></label></th>
+                    <th scope="col"><label asp-for="@Model.First().Categoria"></label></th>
+                    <th scope="col"><label asp-for="@Model.First().Ativo"></label></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
