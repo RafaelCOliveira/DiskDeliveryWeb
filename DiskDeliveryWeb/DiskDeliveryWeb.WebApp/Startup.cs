@@ -39,15 +39,15 @@ namespace DiskDeliveryWeb.WebApp
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
            
-            //if (env.IsDevelopment())
-            //{
+            if (env.IsDevelopment())
+            {
                 app.UseDeveloperExceptionPage();
-            //}
-            //else
-            //{
-            //    app.UseExceptionHandler("/Home/Error");
-            //    app.UseHsts();
-            //}
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+                app.UseHsts();
+            }
           
 
             app.UseHttpsRedirection();
