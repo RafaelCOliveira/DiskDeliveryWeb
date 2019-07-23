@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiskDeliveryWeb.WebApp", "D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiskDeliveryWeb.Data", "DiskDeliveryWeb.Data\DiskDeliveryWeb.Data.csproj", "{62AC069B-1B17-44E8-919E-F82AD8B7E130}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiskDeliveryWeb.DataIdentity", "DiskDeliveryWeb.DataIdentity\DiskDeliveryWeb.DataIdentity.csproj", "{AF8DD4BC-EBC5-424D-B37D-4182B287432C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,5 +60,17 @@ Global
 		{62AC069B-1B17-44E8-919E-F82AD8B7E130}.Release|x64.Build.0 = Release|Any CPU
 		{62AC069B-1B17-44E8-919E-F82AD8B7E130}.Release|x86.ActiveCfg = Release|Any CPU
 		{62AC069B-1B17-44E8-919E-F82AD8B7E130}.Release|x86.Build.0 = Release|Any CPU
+		{AF8DD4BC-EBC5-424D-B37D-4182B287432C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF8DD4BC-EBC5-424D-B37D-4182B287432C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF8DD4BC-EBC5-424D-B37D-4182B287432C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{AF8DD4BC-EBC5-424D-B37D-4182B287432C}.Debug|x64.Build.0 = Debug|Any CPU
+		{AF8DD4BC-EBC5-424D-B37D-4182B287432C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AF8DD4BC-EBC5-424D-B37D-4182B287432C}.Debug|x86.Build.0 = Debug|Any CPU
+		{AF8DD4BC-EBC5-424D-B37D-4182B287432C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF8DD4BC-EBC5-424D-B37D-4182B287432C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF8DD4BC-EBC5-424D-B37D-4182B287432C}.Release|x64.ActiveCfg = Release|Any CPU
+		{AF8DD4BC-EBC5-424D-B37D-4182B287432C}.Release|x64.Build.0 = Release|Any CPU
+		{AF8DD4BC-EBC5-424D-B37D-4182B287432C}.Release|x86.ActiveCfg = Release|Any CPU
+		{AF8DD4BC-EBC5-424D-B37D-4182B287432C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

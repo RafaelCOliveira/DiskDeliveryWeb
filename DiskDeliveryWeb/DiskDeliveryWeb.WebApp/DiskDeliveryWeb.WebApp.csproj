@@ -11,6 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DiskDeliveryWeb.Models\DiskDeliveryWeb.Models.csproj" />
     <ProjectReference Include="..\DiskDeliveryWeb.Data\DiskDeliveryWeb.Data.csproj" />
+    <ProjectReference Include="..\DiskDeliveryWeb.DataIdentity\DiskDeliveryWeb.DataIdentity.csproj" />
   </ItemGroup>
 
 </Project>
