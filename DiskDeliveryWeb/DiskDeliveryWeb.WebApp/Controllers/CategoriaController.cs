@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DiskDeliveryWeb.Data;
 using DiskDeliveryWeb.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DiskDeliveryWeb.WebApp.Controllers
@@ -15,6 +16,7 @@ namespace DiskDeliveryWeb.WebApp.Controllers
             _contexto = contexto;
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult Index()
         {
