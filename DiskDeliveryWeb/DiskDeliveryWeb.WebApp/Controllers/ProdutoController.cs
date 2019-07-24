@@ -3,11 +3,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using DiskDeliveryWeb.Data;
 using DiskDeliveryWeb.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace DiskDeliveryWeb.Controllers
 {
+    [Authorize]
     public class ProdutoController : Controller
     {
         private readonly ApplicationDbContext _contexto;
@@ -15,7 +17,7 @@ namespace DiskDeliveryWeb.Controllers
         {
             _contexto = contexto;
         }
-        
+                
         [HttpGet]
         public IActionResult Index()
         {

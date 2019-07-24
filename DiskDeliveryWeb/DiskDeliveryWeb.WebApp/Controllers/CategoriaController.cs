@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DiskDeliveryWeb.WebApp.Controllers
 {
+    [Authorize]
     public class CategoriaController : Controller
     {
         private readonly ApplicationDbContext _contexto;
@@ -16,7 +17,6 @@ namespace DiskDeliveryWeb.WebApp.Controllers
             _contexto = contexto;
         }
 
-        [Authorize]
         [HttpGet]
         public IActionResult Index()
         {
@@ -29,7 +29,7 @@ namespace DiskDeliveryWeb.WebApp.Controllers
         {
             return View();
         }
-
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Categoria categoria)

@@ -37,6 +37,11 @@ namespace DiskDeliveryWeb.WebApp
             services.AddDbContext<AuthDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DiskDeliveryWebAuthBD")));
 
             services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<AuthDbContext>();
+
+            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            {
+                options.Password.RequiredLength = 6;
+            });
                 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
