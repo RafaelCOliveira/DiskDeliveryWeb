@@ -32,18 +32,16 @@ namespace DiskDeliveryWeb.WebApp
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DiskDeliveryWebBD")));
+            services.AddDbContext<ApplicationDbContext>(options => 
+                options.UseSqlServer(Configuration.GetConnectionString("DiskDeliveryWebBD")));
 
-            services.AddDbContext<AuthDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DiskDeliveryWebAuthBD")));
+            services.AddDbContext<AuthDbContext>(options => 
+                options.UseSqlServer(Configuration.GetConnectionString("DiskDeliveryWebAuthBD")));
 
-            services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<AuthDbContext>();
-
-            services.AddIdentity<IdentityUser, IdentityRole>(options =>
-            {
-                options.Password.RequiredLength = 6;
-            });
+            services.AddDefaultIdentity<IdentityUser>()
+                .AddEntityFrameworkStores<AuthDbContext>();
                 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
